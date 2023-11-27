@@ -1,0 +1,44 @@
+<section class="section contact">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="section-heading">
+            <h2>Sign In</h2>
+          </div>
+        </div>
+        
+        <div class="col-md-5" style="left: 22rem;">
+          <form id="contact" action="" #form="ngForm" (ngSubmit)="ajouterEtudiant()">
+            <div ngModelGroup="groupe1" #grpe="ngModelGroup">
+            <div class="row">
+              <div class="col-md-12">
+                  <fieldset>
+                    <input name="email" type="email" class="form-control" [(ngModel)]="newEtudiant.email" id="email" placeholder="Your Email" required="">
+                  </fieldset>
+                </div>
+              <div class="col-md-12">
+                <fieldset>
+                  <input name="password" type="password" class="form-control" id="password" [(ngModel)]="newEtudiant.pwd" placeholder="Your password" required="">
+                </fieldset>
+              </div>
+              <div class="row">
+                <div class="">
+                  <fieldset>
+                    <button type="submit" id="form-submit-signin" class="button">Sign In</button>
+                    <button type="submit" style="margin-left: 1.5rem;" id="form-submit-signup" routerLink="../etudiantRegister" class="button">Sign Up</button>
+                  </fieldset>
+                  <fieldset class="mx-1">
+                    
+                  </fieldset>
+                </div>
+                <div class="">
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
