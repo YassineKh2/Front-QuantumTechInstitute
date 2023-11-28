@@ -7,10 +7,14 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { BodyComponent } from './body/body.component';
 import { FooterComponent } from './footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
+import { UniversiteModule } from './universite/universite.module';
+import {BackofficeModule} from "./Backoffice/backoffice.module";
+import { FrontofficeComponent } from './frontoffice/frontoffice.component';
+import {FrontofficeModule} from "./frontoffice/frontoffice.module";
 
 @NgModule({
-  declarations: [AppComponent, NavbarComponent, BodyComponent, FooterComponent],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  declarations: [AppComponent],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FrontofficeModule],
   providers: [],
   bootstrap: [AppComponent],
 })

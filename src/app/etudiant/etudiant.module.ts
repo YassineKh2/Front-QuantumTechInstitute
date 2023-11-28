@@ -6,6 +6,7 @@ import { EtudiantListComponent } from './component/etudiant-list/etudiant-list.c
 import { EtudiantAddComponent } from './component/etudiant-add/etudiant-add.component';
 import { FormsModule } from '@angular/forms';
 import { EtudiantAddSignupComponent } from './component/etudiant-add-signup/etudiant-add-signup.component';
+import {FrontofficeModule} from "../frontoffice/frontoffice.module";
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { EtudiantAddSignupComponent } from './component/etudiant-add-signup/etud
   imports: [
     CommonModule,
     EtudiantRoutingModule,
-    FormsModule
+    FormsModule,
+    FrontofficeModule
   ]
 })
 export class EtudiantModule { }
