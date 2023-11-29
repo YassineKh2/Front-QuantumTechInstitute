@@ -17,7 +17,7 @@ export class EtudiantAddSignupComponent {
     dateNaissance: new Date(),
     ecole: '',
     email: '',
-    pwd: '',
+    password: '',
     reservations: [],
   };
   constructor(
@@ -40,7 +40,7 @@ export class EtudiantAddSignupComponent {
             dateNaissance: new Date(),
             ecole: '',
             email: '',
-            pwd: '',
+            password: '',
             reservations: [],
           };
           this.router.navigateByUrl('mainetudiants/etudiantLogin');

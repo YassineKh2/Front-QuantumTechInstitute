@@ -8,7 +8,7 @@ export class Etudiant {
     cin!: number;
     ecole!: string;
     dateNaissance!: Date;
-    pwd!: string;
+    password!: string;
     email!: string;
     reservations: Reservation[]=[]; 
   }

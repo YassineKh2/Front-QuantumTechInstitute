@@ -12,7 +12,11 @@ export class EtudiantService {
 
     return this._http.get<Etudiant[]>("http://localhost:8083/angular/api/etudiant/getAllEtudiant");
   }
+  
   AddEtudiant(etudiant: Etudiant): Observable<Etudiant> {
     return this._http.post<Etudiant>("http://localhost:8083/angular/api/etudiant/addEtudiant", etudiant);
+  }
+  login(etudiant: Etudiant): Observable<Etudiant> {
+    return this._http.post<Etudiant>("http://localhost:8083/angular/api/etudiant/login", etudiant);
   }
 }
