@@ -1,0 +1,41 @@
+<!-- UniversityComponent.html -->
+<div class="body-wrapper mx-5">
+  <div class="container-fluid">
+    <div class="container-fluid">
+      <div class="container-fluid">
+        <div class="container-fluid">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title fw-semibold mb-4">Add a university</h5>
+              <div class="card">
+                <div class="card-body">
+                  <form (ngSubmit)="modfierFoyer()" #FoyerForm="ngForm">
+                    <div class="mb-3">
+                      <label class="form-label" for="InputnomFoyer">Name</label>
+                      <fieldset>
+                        <input [(ngModel)]="NewFoyer.nomFoyer" name="nomFoyer"
+                               aria-describedby="InputnomFoyer" class="form-control"
+                               id="InputnomFoyer" type="text" required>
+                      </fieldset>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label" for="capaciteFoyer">Capacite</label>
+                      <fieldset>
+                        <input [(ngModel)]="NewFoyer.capaciteFoyer" name="capaciteFoyer"
+                               aria-describedby="capaciteFoyer" class="form-control"
+                               id="capaciteFoyer" type="text" required>
+                      </fieldset>
+                    </div>
+                    <button class="btn btn-primary" type="submit" [disabled]="!FoyerForm.valid">
+                      Submit
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

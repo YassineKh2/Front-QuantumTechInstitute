@@ -9,6 +9,14 @@ const routes: Routes = [
 
   {path:'', component:BackofficeComponent, children:[
       {path:'', component:BodyBackofficeComponent},
+      {path: 'universite',
+        loadChildren: () =>
+          import('../universite/universite.module').then((m) => m.UniversiteModule),
+      },
+      {path: 'foyer',
+        loadChildren: () =>
+          import('../foyer/foyer.module').then((m) => m.FoyerModule),
+      },
     ]},
 ];
 
