@@ -1,0 +1,58 @@
+<div class="body-wrapper p-5">
+  <div class="col-lg-8 d-flex align-items-stretch">
+    <div class="card w-100">
+      <div class="card-body p-4">
+        <h5 class="card-title fw-semibold mb-4">Universities</h5>
+        <div class="table-responsive">
+          <table class="table text-nowrap mb-0 align-middle">
+            <thead class="text-dark fs-4">
+            <tr>
+              <th class="border-bottom-0">
+                <h6 class="fw-semibold mb-0">Id</h6>
+              </th>
+              <th class="border-bottom-0">
+                <h6 class="fw-semibold mb-0">Name University</h6>
+              </th>
+              <th class="border-bottom-0">
+                <h6 class="fw-semibold mb-0">Address</h6>
+              </th>
+              <th class="border-bottom-0">
+                <h6 class="fw-semibold mb-0">Foyer</h6>
+              </th>
+              <th class="border-bottom-0">
+                <h6 class="fw-semibold mb-0">Actions</h6>
+              </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let uni of universites">
+              <td class="border-bottom-0"><h6 class="fw-semibold mb-0">{{universites.indexOf(uni)}}</h6></td>
+              <td class="border-bottom-0">
+                <h6 class="fw-semibold mb-1">{{uni.nomUniversite}}</h6>
+              </td>
+              <td class="border-bottom-0">
+                <h6 class="fw-semibold mb-1">{{uni.adresse}}</h6>
+              </td>
+              <td class="border-bottom-0">
+                <div class="d-flex align-items-center gap-2">
+                  <a href="#">
+                  <span class="badge bg-primary rounded-3 fw-semibold">{{uni.foyer?.nomFoyer}}</span>
+                  </a>
+                </div>
+              </td>
+              <td class="border-bottom-0">
+                <a aria-expanded="false" routerLink="modify/{{uni.idUniversite}}" class="sidebar-link" href="#">
+                  <i class="ti ti-edit editButton" style="font-size: 1.5rem;color: green;"></i>
+                </a>
+                <a aria-expanded="false" class="sidebar-link"  (click)="deleteUni(universites.indexOf(uni))">
+                  <i class="ti ti-trash" style="font-size: 1.5rem;color: red"></i>
+                </a>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
