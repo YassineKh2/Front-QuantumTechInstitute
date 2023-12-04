@@ -26,6 +26,14 @@
                                id="InputAddress" type="text" required>
                       </fieldset>
                     </div>
+
+                    <div class="mb-3">
+                      <label style="font-weight: bold; color: aliceblue; font-size: 12px;">Profile Picture :(optional)</label>
+                      <fieldset>
+                        <input name="picture" type="file" class="form-control" [(ngModel)]="NewUni.imageUni" id="picture" placeholder="picture" (change)="onFileSelected($event)">
+                      </fieldset>
+                    </div>
+
                     <div class="mb-3">
                       <label class="form-label" for="exampleInputFoyer">Foyer</label>
                       <fieldset>
@@ -35,6 +43,8 @@
                         </select>
                       </fieldset>
                     </div>
+
+
                     <button class="btn btn-primary" type="submit" [disabled]="!universityForm.valid">
                       Submit
                     </button>

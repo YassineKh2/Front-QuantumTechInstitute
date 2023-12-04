@@ -17,6 +17,9 @@
                 <h6 class="fw-semibold mb-0">Address</h6>
               </th>
               <th class="border-bottom-0">
+                <h6 class="fw-semibold mb-0">Picture</h6>
+              </th>
+              <th class="border-bottom-0">
                 <h6 class="fw-semibold mb-0">Foyer</h6>
               </th>
               <th class="border-bottom-0">
@@ -34,8 +37,11 @@
                 <h6 class="fw-semibold mb-1">{{uni.adresse}}</h6>
               </td>
               <td class="border-bottom-0">
+                <img *ngIf="uni.imageUni !== null" [src]="'../../../../assets/UniImages/' + uni.imageUni" alt="Profile Picture" style="width: 100px; height: auto;">
+              </td>
+              <td class="border-bottom-0">
                 <div class="d-flex align-items-center gap-2">
-                  <a href="#">
+                  <a routerLink="/backoffice/foyer">
                   <span class="badge bg-primary rounded-3 fw-semibold">{{uni.foyer?.nomFoyer}}</span>
                   </a>
                 </div>

@@ -17,7 +17,14 @@ export class UniversiteListComponent implements OnInit {
   ngOnInit() {
     this.universiteService.getAllUniversites().subscribe(data => {
       this.universites = data;
+      console.log(this.universites)
+      this.universites.forEach((uni)=>{
+        console.log(uni.imageUni)
+
+      })
+
     });
+
   }
 
   deleteUni(indexUni: number) {
@@ -25,8 +32,10 @@ export class UniversiteListComponent implements OnInit {
     // @ts-ignore
     this.universiteService.deleteUniversite(uni).subscribe(
       () => {
-        this.universites.slice(indexUni,1)
+        this.universites= this.universites.filter((univer)=>{ // @ts-ignore
+          return univer.idUniversite !== uni.idUniversite })
       }
     );
   }
+
 }

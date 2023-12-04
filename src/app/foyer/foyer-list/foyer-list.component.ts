@@ -20,12 +20,14 @@ export class FoyerListComponent implements OnInit {
     });
   }
 
-  deleteUni(indexUni: number) {
-    let uni = this.Foyers.at(indexUni);
+  deleteFoy(indexUni: number) {
+    let foy = this.Foyers.at(indexUni);
     // @ts-ignore
-    this.foyerService.deleteFoyer(uni).subscribe(
+    this.foyerService.deleteFoyer(foy).subscribe(
       () => {
-        this.Foyers.slice(indexUni,1)
+        this.Foyers= this.Foyers.filter((foyer)=>{ // @ts-ignore
+          return foyer.idFoyer !== foy.idFoyer })
+
       }
     );
   }

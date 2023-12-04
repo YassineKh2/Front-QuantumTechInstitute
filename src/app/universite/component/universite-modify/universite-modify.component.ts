@@ -15,6 +15,7 @@ export class UniversiteModifyComponent implements OnInit {
     idUniversite: 0,
     nomUniversite: '',
     adresse: '',
+    imageUni:'',
     foyer: undefined,
   }
   idFoyer: number | undefined = undefined
@@ -43,7 +44,11 @@ export class UniversiteModifyComponent implements OnInit {
       this.Foyers = data;
     });
   }
-
+  onFileSelected(event: any): void {
+    const file: File = event.target.files[0];
+    this.NewUni.imageUni = file.name;
+    this.uploadFile(file);
+  }
   modifyUni() {
     if (this.idFoyer === undefined) {
       this.universiteService.modifyUniversite(this.NewUni).subscribe();
@@ -57,6 +62,19 @@ export class UniversiteModifyComponent implements OnInit {
       },
       () => {
         console.log('failed')
+      }
+    );
+  }
+  uploadFile(file: File): void {
+    const formData = new FormData();
+    formData.append('file', file);
+
+    this.universiteService.uploadImageUni(formData).subscribe(
+      (response: string) => {
+        console.log('File uploaded successfully:', response);
+      },
+      (error) => {
+        console.error('Error uploading file', error);
       }
     );
   }
