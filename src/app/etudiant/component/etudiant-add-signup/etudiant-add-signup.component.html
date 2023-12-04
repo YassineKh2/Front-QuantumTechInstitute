@@ -8,45 +8,109 @@
         </div>
 
         <div class="col-md-6" style="left: 17rem;">
-          <form id="contact" action="" #form="ngForm">
+          <form id="contact" action="" #form="ngForm" novalidate>
             <div ngModelGroup="groupe1" #grpe="ngModelGroup">
             <div class="row">
               <div class="col-md-6">
                 <fieldset>
-                  <input name="prenomEt" type="text" class="form-control" [(ngModel)]="newEtudiant.prenomEt" id="prenomEt" placeholder="Your firstName" required="">
+                  <input name="prenomEt" type="text" class="form-control" pattern="[a-zA-Z]*" [(ngModel)]="newEtudiant.prenomEt" id="prenomEt" placeholder="Your firstName" required #prenomEt="ngModel">
+                  <div *ngIf="formSubmitted">
+                  <div *ngIf="prenomEt.errors?.['required']" style="margin-top: -1.6rem;"><span  style="font-weight: bold; color: red; font-size: 12px;">Your FirstName is required</span></div>
+                  </div>
                 </fieldset>
               </div>
                 <div class="col-md-6">
                   <fieldset>
-                    <input name="nomEt" type="text" class="form-control" [(ngModel)]="newEtudiant.nomEt" id="nomEt" placeholder="Your LastName" required="">
+                    <input name="nomEt" type="text" class="form-control" [(ngModel)]="newEtudiant.nomEt" id="nomEt" placeholder="Your LastName" required #nomEt="ngModel">
+                    <div *ngIf="formSubmitted">
+                    <div *ngIf="nomEt.errors?.['required']" style="margin-top: -1.6rem;"><span  style="font-weight: bold; color: red; font-size: 12px;">Your LastName is required</span></div>
+                  </div>
                   </fieldset>
                 </div>
                 <div class="col-md-6">
                   <fieldset>
-                    <input name="cin" type="number" class="form-control" [(ngModel)]="newEtudiant.cin" id="cin" placeholder="CIN" required="">
-                  </fieldset>
-                </div>
+                    <input
+                    name="cin"
+                    type="text"
+                    class="form-control"
+                    [(ngModel)]="newEtudiant.cin"
+                    id="cin"
+                    placeholder="CIN"
+                    required
+                    minlength="8"
+                    maxlength="8"
+                    pattern="\d*"
+                    #cinInput="ngModel"
+                  >
+                 <div *ngIf="formSubmitted">
+                  <div *ngIf="cinInput.errors?.['required']" style="margin-top: -1.6rem;">
+                    <span style="font-weight: bold; color: red; font-size: 12px;">CIN is required</span>
+                  </div>
+                  <div *ngIf="cinInput.errors?.['minlength'] || cinInput.errors?.['maxlength']" style="margin-top: -1.6rem;">
+                    <span style="font-weight: bold; color: red; font-size: 12px;">CIN should be exactly 8 digits</span>
+                  </div>
+                  <div *ngIf="cinInput.errors?.['pattern']" style="margin-top: -1.6rem;">
+                    <span style="font-weight: bold; color: red; font-size: 12px;">CIN should only contain digits</span>
+                  </div>           
+                </div>       </fieldset>
+                 
+              </div>
                 <div class="col-md-6">
                   <fieldset>
-                    <input name="ecole" type="text" class="form-control" [(ngModel)]="newEtudiant.ecole" id="ecole" placeholder="Universite" required="">
+                    <input name="ecole" type="text" class="form-control" [(ngModel)]="newEtudiant.ecole" id="ecole" placeholder="Universite" required #ecole="ngModel">
+                    <div *ngIf="formSubmitted">
+                    <div *ngIf="ecole.errors?.['required']" style="margin-top: -1.6rem;"><span  style="font-weight: bold; color: red; font-size: 12px;">Universite is required</span></div>
+                  </div>
                   </fieldset>
                 </div>
                 <div class="col-md-6">
                   <label for="" style="font-weight: bold; color: aliceblue; font-size: 12px;">Email :</label>
                   <fieldset>
-                    <input name="email" type="email" class="form-control" [(ngModel)]="newEtudiant.email" id="email" placeholder="Email" required="">
+                    <input name="email" type="email" class="form-control" [(ngModel)]="newEtudiant.email" id="email" placeholder="Email" required #email="ngModel">
+                    <div *ngIf="formSubmitted">
+                    <div *ngIf="email.errors?.['required']" style="margin-top: -1.6rem;"><span  style="font-weight: bold; color: red; font-size: 12px;">Your Email is required</span></div>     
+                  </div>
+                  <div *ngIf="emailExist">
+                    <div  style="margin-top: -1.6rem;"><span  style="font-weight: bold; color: red; font-size: 12px;">Your Email is already in use</span></div>     
+                  </div>
                   </fieldset>
                 </div>
                 <div class="col-md-6">
                   <label for="" style="font-weight: bold; color: aliceblue; font-size: 12px;">Password :</label>
                   <fieldset>
-                    <input name="password" type="password" class="form-control" [(ngModel)]="newEtudiant.password" id="password" placeholder="Password" required="">
+                    <input name="password" type="password" class="form-control" [(ngModel)]="newEtudiant.password" id="password" placeholder="Password" required minlength="3" #password="ngModel">
+                    <div *ngIf="formSubmitted">
+                    <div *ngIf="password.errors?.['required']" style="margin-top: -1.6rem;"><span  style="font-weight: bold; color: red; font-size: 12px;">Your Password is required</span></div>
+                    <div *ngIf="password.errors?.['minlength']" style="margin-top: -1.6rem;">
+                      <span style="font-weight: bold; color: red; font-size: 12px;">Password should be at least 3 characters</span>
+                    </div>
+                    <div *ngIf="!isFirstCharUppercase(newEtudiant.password)" style="margin-top: -1.6rem;">
+                      <span style="font-weight: bold; color: red; font-size: 12px; margin-top: -1.6rem;">Password should start with an uppercase letter</span>
+                    </div>
+                  </div>
                   </fieldset>
                 </div>
                 <div class="col-md-12">
-                  <label for="" style="font-weight: bold; color: aliceblue; font-size: 12px;">Date Of birth :</label>
+                  <label for="" style="font-weight: bold; color: aliceblue; font-size: 12px;">Date Of birth (not exceeding today's date):</label>
                   <fieldset>
-                    <input name="dateofbirth" type="date" class="form-control" [(ngModel)]="newEtudiant.dateNaissance" id="dateofbirth" placeholder="Date of birth" required="">
+                    <input
+                      name="dateofbirth"
+                      type="date"
+                      class="form-control"
+                      [(ngModel)]="newEtudiant.dateNaissance"
+                      id="dateofbirth"
+                      placeholder="Date of birth"
+                      
+                      max="{{ getTodayDate() }}"
+                      required #date="ngModel"
+                    >
+                  </fieldset>
+                 
+                </div>
+                <div class="col-md-12">
+                  <label for="" style="font-weight: bold; color: aliceblue; font-size: 12px;">Profile Picture :(optional)</label>
+                  <fieldset>
+                    <input name="picture" type="file" class="form-control" [(ngModel)]="newEtudiant.picture" id="picture" placeholder="picture" (change)="onFileSelected($event)">
                   </fieldset>
                 </div>
               <div class="row">

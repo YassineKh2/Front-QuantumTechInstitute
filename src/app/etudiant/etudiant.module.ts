@@ -7,10 +7,12 @@ import { EtudiantAddComponent } from './component/etudiant-add/etudiant-add.comp
 import { FormsModule } from '@angular/forms';
 import { EtudiantAddSignupComponent } from './component/etudiant-add-signup/etudiant-add-signup.component';
 import {FrontofficeModule} from "../frontoffice/frontoffice.module";
+import { EtudiantProfileComponent } from './component/etudiant-profile/etudiant-profile.component';
+import { EtudiantUpdateProfileComponent } from './component/etudiant-update-profile/etudiant-update-profile.component';
 
 
 @NgModule({
-  declarations: [EtudiantListComponent, EtudiantAddComponent, EtudiantAddSignupComponent],
+  declarations: [EtudiantListComponent, EtudiantAddComponent, EtudiantAddSignupComponent, EtudiantProfileComponent, EtudiantUpdateProfileComponent],
   imports: [
     CommonModule,
     EtudiantRoutingModule,

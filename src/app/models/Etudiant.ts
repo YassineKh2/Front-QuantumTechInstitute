@@ -10,5 +10,6 @@ export class Etudiant {
     dateNaissance!: Date;
     password!: string;
     email!: string;
+    picture!: string;
     reservations: Reservation[]=[]; 
   }

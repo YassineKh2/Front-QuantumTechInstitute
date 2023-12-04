@@ -1,0 +1,42 @@
+<div style="margin-top: 1rem; margin-left: 30rem;">
+    <h5 class="card-title " style="font-size: 2rem;" appHoverEffectReclamation>List of Reclamations</h5>
+  </div>
+  <div class="form-group" style="margin-top: 1rem;">
+    <input style="width: 18rem;" type="text" placeholder="Search by reclamation title:" class="form-control" id="searchFoyer" [(ngModel)]="searchKeyword" (input)="searchEtudiantsByNomEt()" />
+  </div>
+
+  <table class="table table-striped table-bordered" style="margin-top: 1rem;">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col" appHoverEffectReclamation>Titre</th>
+        <th scope="col" appHoverEffectReclamation>Message</th>
+        <th scope="col" appHoverEffectReclamation>Email</th>
+        <th scope="col" appHoverEffectReclamation>Date De Creation</th>
+        <th scope="col" appHoverEffectReclamation>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngIf="searchResults$ | async as results; else etudiantLoop">
+        <tr *ngFor="let reclamation of results">
+            <td appHoverEffectReclamation>{{ reclamation.titre }}</td>
+            <td appHoverEffectReclamation>{{ reclamation.message }}</td>
+            <td appHoverEffectReclamation>{{ reclamation.email }}</td>
+            <td appHoverEffectReclamation>{{ reclamation.dateCreation }}</td>
+            <td appHoverEffectReclamation><button (click)="deleteReclamation(reclamation?.idReclamation)">
+                <img src="../../../../assets/images/delete.png" alt="Update" width="20" height="20">
+              </button></td>
+        </tr>
+      </ng-container>
+      <ng-template #etudiantLoop>
+        <tr *ngFor="let reclamation of reclamations">
+            <td appHoverEffectReclamation>{{ reclamation.titre }}</td>
+            <td appHoverEffectReclamation>{{ reclamation.message }}</td>
+            <td appHoverEffectReclamation>{{ reclamation.email }}</td>
+            <td appHoverEffectReclamation>{{ reclamation.dateCreation }}</td>
+            <td appHoverEffectReclamation><button (click)="deleteReclamation(reclamation?.idReclamation)">
+                <img src="../../../../assets/images/delete.png" alt="Update" width="20" height="20">
+              </button></td>
+        </tr>
+      </ng-template>
+    </tbody>
+  </table>

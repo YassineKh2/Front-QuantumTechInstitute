@@ -10,11 +10,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('./frontoffice/frontoffice.module').then((m) => m.FrontofficeModule),
   },
-  {
-    path: 'backoffice',
-    loadChildren: () =>
-      import('./Backoffice/backoffice.module').then((m) => m.BackofficeModule),
-  },
+  
   {
     path: 'universites',
     loadChildren: () =>
