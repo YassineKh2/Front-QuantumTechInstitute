@@ -1,0 +1,55 @@
+<section class="section contact">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="section-heading">
+            <h2>Reclamation</h2>
+          </div>
+        </div>
+
+        <div class="col-md-6" style="left: 22rem;">
+          <form id="contact" action="" #form="ngForm" novalidate>
+            <div ngModelGroup="groupe1" #grpe="ngModelGroup">
+            <div class="row">
+              <div class="col-md-6">
+                <fieldset>
+                  <input name="email" type="email" class="form-control" [(ngModel)]="newReclamation.email" id="email" placeholder="Email" required #email="ngModel">          
+                  <div *ngIf="formSubmitted">
+                    <div *ngIf="email.errors?.['required']" style="margin-top: -1.6rem;"><span  style="font-weight: bold; color: red; font-size: 12px;">Your Email is required</span></div>     
+                  </div>
+                </fieldset>
+              </div>
+              <div class="col-md-6">
+                <fieldset>
+                  <input name="titre" type="text" class="form-control" [(ngModel)]="newReclamation.titre" id="titre" placeholder="Titre" required minlength="3" #titre="ngModel">
+                  <div *ngIf="formSubmitted">
+                    <div *ngIf="titre.errors?.['required']" style="margin-top: -1.6rem;"><span style="font-weight: bold; color: red; font-size: 12px;">Your Title is required</span></div>
+                    <div *ngIf="titre.errors?.['minlength']" style="margin-top: -1.6rem;"><span style="font-weight: bold; color: red; font-size: 12px;">Title should be at least 3 characters</span></div>
+                  </div>
+                </fieldset>
+              </div>
+                <div class="col-md-12">
+                  <fieldset>
+                    <textarea name="message" class="form-control" [(ngModel)]="newReclamation.message" id="message" placeholder="Your message" required minlength="8" #message="ngModel"></textarea>
+                    <div *ngIf="formSubmitted">
+                      <div *ngIf="message.errors?.['required']" style="margin-top: -1.6rem;"><span style="font-weight: bold; color: red; font-size: 12px;">Your message is required</span></div>
+                      <div *ngIf="message.errors?.['minlength']" style="margin-top: -1.6rem;"><span style="font-weight: bold; color: red; font-size: 12px;">Message should be at least 8 characters</span></div>
+                    </div>
+                  </fieldset>
+                </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <fieldset class="mx-1">
+                    <button type="submit" id="form-submit-signup" (click)="ajouterReclamation()"  class="button">Reclamation</button>
+                  </fieldset>
+                </div>
+              </div>
+            </div>
+          </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+</section>
+

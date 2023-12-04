@@ -17,7 +17,19 @@
       <li><a href="#">Courses</a></li>
       <!-- <li><a href="#section5">Video</a></li> -->
       <li><a href="#=">Contact</a></li>
-      <li><a href="" routerLink="mainetudiants/etudiantLogin">Sign In</a></li>
+      
+      <ng-container *ngIf="etudiantName; else signInLink">
+        <li class="has-submenu"><a href="" >Reclamation</a>
+          <ul class="sub-menu">
+            <li><a href="#" routerLink="mainreclamations/reclamationList">Your Complaints</a></li>
+            <li><a href="#" routerLink="mainreclamations/reclamationAdd">Add Complaints</a></li>
+          </ul></li>
+        <li><a href="" routerLink="mainetudiants/etudiantProfile">{{ etudiantName }}</a></li>
+        <li><a href="" (click)="logout()">Logout</a></li>
+      </ng-container>
+      <ng-template #signInLink>
+        <li><a href="" routerLink="mainetudiants/etudiantLogin">Sign In</a></li>
+      </ng-template>
     </ul>
   </nav>
 </header>

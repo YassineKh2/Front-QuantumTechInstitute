@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Etudiant } from 'src/app/models/Etudiant';
 import { EtudiantService } from 'src/app/services/etudiant.service';
@@ -9,6 +9,10 @@ import { EtudiantService } from 'src/app/services/etudiant.service';
   styleUrls: ['./etudiant-add.component.css'],
 })
 export class EtudiantAddComponent {
+  constructor(
+    private etudiantService: EtudiantService,
+    private router: Router
+  ) {}
   newEtudiant: Etudiant = {
     idEtudiant: 0,
     nomEt: '',
@@ -17,37 +21,33 @@ export class EtudiantAddComponent {
     dateNaissance: new Date(),
     ecole: '',
     email: '',
-    pwd: '',
+    password: '',
+    picture: '',
     reservations: [],
   };
-  constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-    private etudiantService: EtudiantService
-  ) {}
 
-  ajouterEtudiant(): void {
-    if (this.newEtudiant.nomEt !== '')
-      this.etudiantService.AddEtudiant(this.newEtudiant).subscribe(
-        (addedEtudiant: Etudiant) => {
-          console.log('Etudiant added successfully', addedEtudiant);
-          this.loadEtudiants();
-          this.newEtudiant = {
-            idEtudiant: 0,
-            nomEt: '',
-            prenomEt: '',
-            cin: 0,
-            dateNaissance: new Date(),
-            ecole: '',
-            email: '',
-            pwd: '',
-            reservations: [],
-          };
-        },
-        (error) => {
-          console.error('Error adding Etudiant', error);
+  etudiants: Etudiant = new Etudiant();
+  showErrorMessage: boolean = false;
+  loginEtudiant(): void {
+    if (this.newEtudiant.email !== '')
+      this.etudiantService.login(this.newEtudiant).subscribe((data) => {
+        this.etudiants = data;
+        if (
+          this.newEtudiant.email === 'admin@admin.com' &&
+          this.newEtudiant.password === 'admin'
+        ) {
+          this.router.navigateByUrl('backoffice');
+        } else if (this.etudiants != null) {
+          localStorage.setItem('etudiant', JSON.stringify(this.etudiants));
+          const etudiantString = localStorage.getItem('etudiant');
+          console.log(etudiantString);
+          this.router.navigateByUrl('');
+          setTimeout(() => {
+            window.location.href = window.location.href;
+          }, 100);
+        } else {
+          this.showErrorMessage = true;
         }
-      );
+      });
   }
-  loadEtudiants(): void {}
 }
