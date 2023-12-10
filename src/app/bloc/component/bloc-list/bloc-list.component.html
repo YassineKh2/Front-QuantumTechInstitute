@@ -1,0 +1,13 @@
+<!-- bloc-list.component.html -->
+
+<div class="container">
+    <h2>Bloc List</h2>
+
+    <ul class="list-group">
+        <li *ngFor="let bloc of blocs" class="list-group-item">
+            {{ bloc.nomBloc }}
+            <!-- Add more properties based on your Bloc entity -->
+            <button class="btn btn-danger" (click)="deleteBloc(bloc.idBloc)">Delete</button>
+        </li>
+    </ul>
+</div>

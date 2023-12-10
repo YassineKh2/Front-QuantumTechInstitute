@@ -1,0 +1,39 @@
+<!-- chambre-add.component.html -->
+<div class="body-wrapper mx-5">
+  <div class="container-fluid">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title fw-semibold mb-4">Add a Room</h5>
+        <div class="card">
+          <div class="card-body">
+            <form (ngSubmit)="addChambre()" #ChambreForm="ngForm">
+              <div class="mb-3">
+                <label class="form-label" for="InputNomBloc">Bloc Name</label>
+                <input [(ngModel)]="NewChambre.bloc.nomBloc" name="nomBloc" class="form-control" id="InputNomBloc" type="text" required>
+              </div>
+              <div class="mb-3">
+                <label class="form-label" for="InputNumeroChambre">Room Number</label>
+                <input [(ngModel)]="NewChambre.numeroChambre" name="numeroChambre" class="form-control" id="InputNumeroChambre" type="text" required>
+              </div>
+              <!-- Assuming idChambre should not be manually entered by the user -->
+              <!-- <div class="mb-3">
+                  <label class="form-label" for="InputIdChambre">Chambre ID</label>
+                  <input [(ngModel)]="NewChambre.idChambre" name="idChambre" class="form-control" id="InputIdChambre" type="text" required>
+              </div> -->
+              <div class="mb-3">
+                <label class="form-label" for="InputTypeChambre">Room Type</label>
+                <select [(ngModel)]="NewChambre.typeC" name="typeC" class="form-control" id="InputTypeChambre" required>
+                  <option value="SIMPLE">Simple</option>
+                  <!-- Add other room types as needed -->
+                </select>
+              </div>
+              <button class="btn btn-primary" type="submit" [disabled]="!ChambreForm.valid">
+                Submit
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

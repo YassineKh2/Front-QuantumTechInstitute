@@ -1,0 +1,17 @@
+<!-- bloc-add.component.html -->
+
+<div class="container">
+    <h2>Add Bloc</h2>
+    <form (ngSubmit)="addBloc()" #form="ngForm">
+        <div class="form-group">
+            <label for="nomBloc">Bloc Name:</label>
+            <fieldset>
+            <input  [(ngModel)]="NewBloc.nomBloc" type="text" class="form-control" id="nomBloc" name="nomBloc" required>
+            </fieldset>
+        </div>
+
+        <!-- Add more input fields for other properties of your Bloc entity -->
+
+        <button type="submit" class="btn btn-primary">Add Bloc</button>
+    </form>
+</div>

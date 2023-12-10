@@ -1,0 +1,61 @@
+<section class="section contact">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="section-heading">
+            <h2>Sign Up</h2>
+          </div>
+        </div>
+
+        <div class="col-md-6" style="left: 17rem;">
+          <form id="contact" action="" #form="ngForm">
+            <div ngModelGroup="groupe1" #grpe="ngModelGroup">
+            <div class="row">
+              <div class="col-md-6">
+                <fieldset>
+                  <input name="prenomEt" type="text" class="form-control" [(ngModel)]="newEtudiant.prenomEt" id="prenomEt" placeholder="Your firstName" required="">
+                </fieldset>
+              </div>
+                <div class="col-md-6">
+                  <fieldset>
+                    <input name="nomEt" type="text" class="form-control" [(ngModel)]="newEtudiant.nomEt" id="nomEt" placeholder="Your LastName" required="">
+                  </fieldset>
+                </div>
+                <div class="col-md-6">
+                  <fieldset>
+                    <input name="cin" type="number" class="form-control" [(ngModel)]="newEtudiant.cin" id="cin" placeholder="CIN" required="">
+                  </fieldset>
+                </div>
+                <div class="col-md-6">
+                  <fieldset>
+                    <input name="ecole" type="text" class="form-control" [(ngModel)]="newEtudiant.ecole" id="ecole" placeholder="Universite" required="">
+                  </fieldset>
+                </div>
+                <div class="col-md-12">
+                  <label for="" style="font-weight: bold; color: aliceblue; font-size: 12px;">Email :</label>
+                  <fieldset>
+                    <input name="email" type="email" class="form-control" [(ngModel)]="newEtudiant.email" id="email" placeholder="Email" required="">
+                  </fieldset>
+                </div>
+                <div class="col-md-12">
+                  <label for="" style="font-weight: bold; color: aliceblue; font-size: 12px;">Date Of birth :</label>
+                  <fieldset>
+                    <input name="dateofbirth" type="date" class="form-control" [(ngModel)]="newEtudiant.dateNaissance" id="dateofbirth" placeholder="Date of birth" required="">
+                  </fieldset>
+                </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <fieldset class="mx-1">
+                    <button type="submit" id="form-submit-signup" (click)="ajouterEtudiant()" class="button">Sign Up</button>
+                  </fieldset>
+                </div>
+              </div>
+            </div>
+          </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
