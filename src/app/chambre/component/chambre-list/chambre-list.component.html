@@ -1,0 +1,57 @@
+<div class="body-wrapper p-5">
+  <div class="col-lg-8 d-flex align-items-stretch">
+    <div class="card w-100">
+      <div class="card-body p-4">
+        <div class="d-flex justify-content-between justify-content-end mb-2">
+          <h5 class="card-title fw-semibold mb-4 align-self-baseline">Rooms</h5>
+          <a routerLink="add" class="btn btn-primary fs-2 fw-semibold lh-sm align-self-baseline">Add</a>
+        </div>
+        <div class="table-responsive">
+          <table class="table text-nowrap mb-0 align-middle">
+            <thead class="text-dark fs-4">
+            <tr>
+              <th class="border-bottom-0">
+                <h6 class="fw-semibold mb-0">Id</h6>
+              </th>
+              <th class="border-bottom-0">
+                <h6 class="fw-semibold mb-0">Room Number</h6>
+              </th>
+              <th class="border-bottom-0">
+                <h6 class="fw-semibold mb-0">Type</h6>
+              </th>
+              <th class="border-bottom-0">
+                <h6 class="fw-semibold mb-0">Bloc</h6>
+              </th>
+              <th class="border-bottom-0">
+                <h6 class="fw-semibold mb-0">Actions</h6>
+              </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let ch of Chambres">
+              <td class="border-bottom-0"><h6 class="fw-semibold mb-0">{{Chambres.indexOf(ch)}}</h6></td>
+              <td class="border-bottom-0">
+                <h6 class="fw-semibold mb-1">{{ch.numeroChambre}}</h6>
+              </td>
+              <td class="border-bottom-0">
+                <h6 class="fw-semibold mb-1">{{ch.typeC}}</h6>
+              </td>
+              <td class="border-bottom-0">
+                <h6 class="fw-semibold mb-1">{{ch.bloc.nomBloc}}</h6>
+              </td>
+              <td class="border-bottom-0">
+                <a aria-expanded="false" routerLink="modify/{{ch.idChambre}}" class="sidebar-link" href="#">
+                  <i class="ti ti-edit editButton" style="font-size: 1.5rem;color: green;"></i>
+                </a>
+                <a aria-expanded="false" class="sidebar-link"  (click)="deleteChambre(Chambres.indexOf(ch))">
+                  <i class="ti ti-trash" style="font-size: 1.5rem;color: red"></i>
+                </a>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -22,6 +22,11 @@ const routes: Routes = [
         loadChildren: () =>
           import('../bloc/bloc.module').then((m) => m.BlocModule),
       },
+      {
+        path: 'chambre',
+        loadChildren: () =>
+          import('../chambre/chambre.module').then((m) => m.ChambreModule),
+      }
 
     ]},
 ];

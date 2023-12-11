@@ -3,6 +3,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BlocService } from '../../../services/bloc.service';
+import {Bloc} from "../../../models/Bloc";
 
 @Component({
   selector: 'app-bloc-modify',
@@ -10,10 +11,12 @@ import { BlocService } from '../../../services/bloc.service';
   styleUrls: ['./bloc-modify.component.css']
 })
 export class BlocModifyComponent implements OnInit {
-  bloc: { idBloc: number; capaciteBloc: number; nomBloc: string } = {
+  bloc: Bloc = {
     idBloc: 0,
     nomBloc: '',
-    capaciteBloc: 0
+    capaciteBloc: 0,
+    foyer:undefined,
+    chambres:undefined
   }
 
   constructor(
@@ -24,20 +27,16 @@ export class BlocModifyComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe((params) => {
-      this.bloc.idBloc = params['id'];
-      this.loadBloc();
-    });
-  }
-
-  loadBloc() {
-    this.blocService.findById(this.bloc.idBloc).subscribe(
+      let blocid = Number (params['id']);
+      this.blocService.findById(blocid).subscribe(
         (data) => {
           this.bloc = data;
         },
         (error) => {
           console.error('Error loading Bloc', error);
         }
-    );
+      );
+    });
   }
 
   updateBloc() {
@@ -45,11 +44,13 @@ export class BlocModifyComponent implements OnInit {
         (response) => {
           console.log('Bloc updated successfully', response);
           // Navigate to the Bloc list or any other page after successful update
-          this.router.navigate(['/bloc-list']);
+          this.router.navigateByUrl(  '/backoffice/bloc');
         },
         (error) => {
           console.error('Error updating Bloc', error);
         }
     );
   }
+
+  protected readonly Bloc = Bloc;
 }

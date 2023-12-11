@@ -5,9 +5,9 @@ import { BlocAddComponent } from './component/bloc-add/bloc-add.component';
 import {BlocModifyComponent} from "./component/bloc-modify/bloc-modify.component";
 
 const routes: Routes = [
-  { path: 'list', component: BlocListComponent },
+  { path: '', component: BlocListComponent },
   { path: 'add', component: BlocAddComponent },
-  { path: 'modiify', component: BlocModifyComponent}
+  { path: 'modify/:id', component: BlocModifyComponent}
 ];
 
 @NgModule({

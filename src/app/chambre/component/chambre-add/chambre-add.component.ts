@@ -1,17 +1,18 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ChambreService} from "../../../services/chambre.service";
 import {Chambre, TypeChambre} from "../../../models/Chambre";
 import {Router} from "@angular/router";
-import {BlocModule} from "../../../bloc/bloc.module";
 import {Bloc} from "../../../models/Bloc";
 import {NgForm} from "@angular/forms";
+import {Foyer} from "../../../models/Foyer";
+import {BlocService} from "../../../services/bloc.service";
 
 @Component({
   selector: 'app-chambre-add',
   templateUrl: './chambre-add.component.html',
   styleUrls: ['./chambre-add.component.css']
 })
-export class ChambreAddComponent {
+export class ChambreAddComponent implements OnInit{
 
   NewChambre: Chambre =  {
     idChambre: 0,
@@ -20,10 +21,20 @@ export class ChambreAddComponent {
     reservations: [],
     typeC: TypeChambre.SIMPLE,
   }
-  constructor(private chambreService: ChambreService, private router: Router) {
+  idBloc: number = 0
+  Blocs: Bloc[] = []
+  ngOnInit() {
+    this.blocService.findAll().subscribe(data => {
+      this.Blocs = data;
+    });
+  }
+  constructor(private chambreService: ChambreService, private router: Router, private blocService:BlocService) {
   }
 
-  addChambre() {
+  addChambre()
+  {console.log("hey")
+    // @ts-ignore
+    this.NewChambre.bloc = this.Blocs.at(this.idBloc);
     this.chambreService.addChambre(this.NewChambre).subscribe(
         () => {
           this.router.navigateByUrl('/backoffice/chambre');
@@ -33,4 +44,7 @@ export class ChambreAddComponent {
         }
     );
   }
+
+  protected readonly TypeChambre = TypeChambre;
+  protected readonly undefined = undefined;
 }

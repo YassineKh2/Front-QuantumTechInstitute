@@ -1,17 +1,28 @@
 <!-- bloc-add.component.html -->
-
-<div class="container">
+<div class="body-wrapper mx-5">
+  <div class="container-fluid">
+    <div class="card">
+      <div class="card-body">
+  <div class="container" >
     <h2>Add Bloc</h2>
     <form (ngSubmit)="addBloc()" #form="ngForm">
-        <div class="form-group">
-            <label for="nomBloc">Bloc Name:</label>
-            <fieldset>
-            <input  [(ngModel)]="NewBloc.nomBloc" type="text" class="form-control" id="nomBloc" name="nomBloc" required>
-            </fieldset>
-        </div>
+      <div class="form-group">
+        <label for="nomBloc">Bloc Name:</label>
+        <fieldset>
+          <input  [(ngModel)]="NewBloc.nomBloc" type="text" class="form-control" id="nomBloc" name="nomBloc" required>
+        </fieldset>
+        <label for="nomBloc">Capacity:</label>
+        <fieldset>
+          <input  [(ngModel)]="NewBloc.capaciteBloc" type="text" class="form-control" id="capaciteBloc" name="capaciteBloc" required>
+        </fieldset>
+      </div>
 
-        <!-- Add more input fields for other properties of your Bloc entity -->
+      <!-- Add more input fields for other properties of your Bloc entity -->
 
-        <button type="submit" class="btn btn-primary">Add Bloc</button>
+      <button type="submit" class="btn btn-primary">Add Bloc</button>
     </form>
-</div>
+  </div>
+      </div>
+    </div>
+  </div></div>
+

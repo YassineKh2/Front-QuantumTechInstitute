@@ -8,8 +8,12 @@
           <div class="card-body">
             <form (ngSubmit)="addChambre()" #ChambreForm="ngForm">
               <div class="mb-3">
-                <label class="form-label" for="InputNomBloc">Bloc Name</label>
-                <input [(ngModel)]="NewChambre.bloc.nomBloc" name="nomBloc" class="form-control" id="InputNomBloc" type="text" required>
+                <label class="form-label" for="InputNomBloc">Bloc Name</label>                    <fieldset>
+                <select [(ngModel)]="idBloc" name="foyer" class="form-control"
+                        id="InputNomBloc" required>
+                  <option *ngFor="let blc of Blocs" value="{{Blocs.indexOf(blc)}}">{{blc.nomBloc}}</option>
+                </select>
+              </fieldset>
               </div>
               <div class="mb-3">
                 <label class="form-label" for="InputNumeroChambre">Room Number</label>
@@ -23,7 +27,9 @@
               <div class="mb-3">
                 <label class="form-label" for="InputTypeChambre">Room Type</label>
                 <select [(ngModel)]="NewChambre.typeC" name="typeC" class="form-control" id="InputTypeChambre" required>
-                  <option value="SIMPLE">Simple</option>
+                  <option value="{{TypeChambre.SIMPLE}}">Simple</option>
+                  <option value="{{TypeChambre.DOUBLE}}">Double</option>
+                  <option value="{{TypeChambre.TRIPLE}}">Triple</option>
                   <!-- Add other room types as needed -->
                 </select>
               </div>
