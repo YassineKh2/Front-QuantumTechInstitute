@@ -16,6 +16,10 @@ export class ListReclamationComponent {
     // Assuming you have a route named 'update-reclamation'
     this.router.navigate(['mainreclamations/updatereclamation', idReclamation]);
   }
+  redirect() {
+    // Assuming you have a route named 'update-reclamation'
+    this.router.navigateByUrl('mainreclamations/reclamationAdd');
+  }
   ngOnInit() {
     const storedData = localStorage.getItem('etudiant');
     if (storedData) {

@@ -19,11 +19,7 @@
       <li><a href="#=">Contact</a></li>
       
       <ng-container *ngIf="etudiantName; else signInLink">
-        <li class="has-submenu"><a href="" >Reclamation</a>
-          <ul class="sub-menu">
-            <li><a href="#" routerLink="mainreclamations/reclamationList">Your Complaints</a></li>
-            <li><a href="#" routerLink="mainreclamations/reclamationAdd">Add Complaints</a></li>
-          </ul></li>
+        <li><a href=""  routerLink="mainreclamations/reclamationList" >Reclamation</a>
         <li><a href="" routerLink="mainetudiants/etudiantProfile">{{ etudiantName }}</a></li>
         <li><a href="" (click)="logout()">Logout</a></li>
       </ng-container>

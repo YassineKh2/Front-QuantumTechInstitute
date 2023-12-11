@@ -6,16 +6,23 @@
         <div class="container-fluid">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title fw-semibold mb-4">Add a university</h5>
+              <h5 class="card-title fw-semibold mb-4">Add a foyer</h5>
               <div class="card">
                 <div class="card-body">
-                  <form (ngSubmit)="addFoyer()" #FoyerForm="ngForm">
+                  <form (ngSubmit)="addFoyer()" #FoyerForm="ngForm" novalidate>
                     <div class="mb-3">
                       <label class="form-label" for="InputnomFoyer">Name</label>
                       <fieldset>
                         <input [(ngModel)]="NewFoyer.nomFoyer" name="nomFoyer"
                                aria-describedby="InputnomFoyer" class="form-control"
-                               id="InputnomFoyer" type="text" required>
+                               id="InputnomFoyer" type="text" required #nomFoyer="ngModel">
+                               <div *ngIf="formSubmitted">
+                                <div *ngIf="nomFoyer.errors?.['required']" style="margin-top: rem;"><span  style="font-weight: bold; color: red; font-size: 12px;">Name is required</span></div>
+                                <div *ngIf="!isFirstCharUppercase(NewFoyer.nomFoyer)" style="margin-top: rem;">
+                                  <span style="font-weight: bold; color: red; font-size: 12px; margin-top: rem;">Foyer name should start with an uppercase letter</span>
+                                </div>  
+                              </div>
+                                
                       </fieldset>
                     </div>
                     <div class="mb-3">
@@ -23,10 +30,13 @@
                       <fieldset>
                         <input [(ngModel)]="NewFoyer.capaciteFoyer" name="capaciteFoyer"
                                aria-describedby="capaciteFoyer" class="form-control"
-                               id="capaciteFoyer" type="text" required>
+                               id="capaciteFoyer" type="text" required #capFoy="ngModel">
+                               <div *ngIf="formSubmitted">
+                                <div *ngIf="capFoy.errors?.['required']" style="margin-top: rem;"><span  style="font-weight: bold; color: red; font-size: 12px;">capacite is required</span></div>
+                                </div>
                       </fieldset>
                     </div>
-                    <button class="btn btn-primary" type="submit" [disabled]="!FoyerForm.valid">
+                    <button class="btn btn-primary" type="submit" >
                       Submit
                     </button>
                   </form>

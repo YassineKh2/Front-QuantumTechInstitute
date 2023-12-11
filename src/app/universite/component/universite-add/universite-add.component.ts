@@ -1,9 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {Universite} from "../../../models/Universite";
 import {UniversiteService} from "../../../services/universite.service";
 import {FoyerService} from "../../../services/foyer.service";
 import {Foyer} from "../../../models/Foyer";
 import {Router} from "@angular/router";
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-foyer-add',
@@ -11,7 +12,7 @@ import {Router} from "@angular/router";
   styleUrls: ['./universite-add.component.css']
 })
 export class UniversiteAddComponent implements OnInit {
-
+  @ViewChild('universityForm', { static: true }) universityForm!: NgForm;
   NewUni: Universite = {
     idUniversite: 0,
     nomUniversite: '',
@@ -23,7 +24,7 @@ export class UniversiteAddComponent implements OnInit {
   Foyers: Foyer[] = []
   constructor(private universiteService: UniversiteService, private foyerService: FoyerService,private router: Router) {
   }
-
+  formSubmitted: boolean = false;
   ngOnInit() {
     this.foyerService.getAllFoyers().subscribe(data => {
       this.Foyers = data;
@@ -35,9 +36,21 @@ export class UniversiteAddComponent implements OnInit {
     this.NewUni.imageUni = file.name;
     this.uploadFile(file);
   }
+  isFirstCharUppercase(password: string|undefined): boolean {
+    if(password!=undefined){
+    if (password.length === 0) {
+      return true; // No restriction if the password is empty
+    }
+  
+    return password[0] === password[0].toUpperCase();
+  }
+  return false;
+  }
   addUni() {
+    this.formSubmitted = true;
     console.log(this.NewUni)
-    if (this.idFoyer === undefined) {
+    if (this.universityForm.valid && this.isFirstCharUppercase(this.NewUni.nomUniversite)) {
+    if (this.idFoyer === undefined ) {
       this.universiteService.AddUniversite(this.NewUni).subscribe();
       return
     }
@@ -52,6 +65,7 @@ export class UniversiteAddComponent implements OnInit {
       }
     );
   }
+}
   uploadFile(file: File): void {
     const formData = new FormData();
     formData.append('file', file);

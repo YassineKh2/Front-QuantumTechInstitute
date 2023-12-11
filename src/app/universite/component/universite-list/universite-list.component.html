@@ -1,8 +1,11 @@
-<div class="body-wrapper p-5">
-  <div class="col-lg-8 d-flex align-items-stretch">
+<div class="body-wrapper ">
+  <div class="col-lg-8 d-flex align-items-stretch ">
     <div class="card w-100">
       <div class="card-body p-4">
-        <h5 class="card-title fw-semibold mb-4">Universities</h5>
+        <div class="d-flex justify-content-between justify-content-end mb-2">
+          <h5 class="card-title fw-semibold mb-4 align-self-baseline">Universite</h5>
+          <a routerLink="add" class="btn btn-primary fs-2 fw-semibold lh-sm align-self-baseline">Add</a>
+          </div>
         <div class="table-responsive">
           <table class="table text-nowrap mb-0 align-middle">
             <thead class="text-dark fs-4">
@@ -37,7 +40,7 @@
                 <h6 class="fw-semibold mb-1">{{uni.adresse}}</h6>
               </td>
               <td class="border-bottom-0">
-                <img *ngIf="uni.imageUni !== null" [src]="'../../../../assets/UniImages/' + uni.imageUni" alt="Profile Picture" style="width: 100px; height: auto;">
+                <img *ngIf="uni.imageUni !== null" [src]="'../../../../assets/UniImages/' + uni.imageUni" alt="Profile Picture" style="width: 100px; height: auto;max-width: 30px;">
               </td>
               <td class="border-bottom-0">
                 <div class="d-flex align-items-center gap-2">

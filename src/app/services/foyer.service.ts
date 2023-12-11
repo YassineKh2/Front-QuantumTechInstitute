@@ -10,21 +10,21 @@ export class FoyerService {
 
   constructor(private _http:HttpClient) { }
   getAllFoyers():Observable<Foyer[]>{
-    return this._http.get<Foyer[]>("http://localhost:8081/Spring/getAllFoyers");
+    return this._http.get<Foyer[]>("http://localhost:8083/angular/api/getAllFoyers");
   }
   AddFoyer(foyer: Foyer): Observable<Foyer> {
-    return this._http.post<Foyer>("http://localhost:8081/Spring/addFoyer", foyer);
+    return this._http.post<Foyer>("http://localhost:8083/angular/api/addFoyer", foyer);
   }
   deleteFoyer(foy: Foyer): Observable<Foyer> {
-    return this._http.delete<Foyer>(`http://localhost:8081/Spring/deleteFoyer/${foy.idFoyer}`);
+    return this._http.delete<Foyer>(`http://localhost:8083/angular/api/deleteFoyer/${foy.idFoyer}`);
   }
 
   getFoyerById(id: number): Observable<Foyer> {
-    return this._http.get<Foyer>(`http://localhost:8081/Spring/getFoyerById/${id}`);
+    return this._http.get<Foyer>(`http://localhost:8083/angular/api/getFoyerById/${id}`);
   }
 
   modifyFoyer(uni: Foyer): Observable<Foyer> {
-    return this._http.put<Foyer>(`http://localhost:8081/Spring/updateFoyer`,uni);
+    return this._http.put<Foyer>(`http://localhost:8083/angular/api/updateFoyer`,uni);
   }
 
 }
