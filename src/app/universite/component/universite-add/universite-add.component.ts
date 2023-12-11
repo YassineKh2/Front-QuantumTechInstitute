@@ -19,6 +19,7 @@ export class UniversiteAddComponent implements OnInit {
     adresse: '',
     imageUni:'',
     foyer: undefined,
+    clubs:[]
   }
   idFoyer: number|undefined = undefined
   Foyers: Foyer[] = []

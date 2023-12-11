@@ -1,3 +1,4 @@
+import { Club } from "./Club";
 import { Foyer } from "./Foyer";
 
 
@@ -7,4 +8,5 @@ export class Universite {
     adresse: string | undefined;
     imageUni!: string;
     foyer: Foyer | undefined;
+    clubs: Club[] = [];
   }

@@ -6,5 +6,5 @@ export class Bloc {
     nomBloc!: string;
     capaciteBloc!: number;
     foyer: Foyer | undefined;
-    chambres: Chambre[] = [];
+    chambres: Chambre[] | undefined;
   }

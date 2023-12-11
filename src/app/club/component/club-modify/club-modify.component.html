@@ -1,0 +1,94 @@
+<!-- UniversityComponent.html -->
+<div class="body-wrapper mx-5">
+    <div class="container-fluid">
+      <div class="container-fluid">
+        <div class="container-fluid">
+          <div class="container-fluid">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title fw-semibold mb-4">Add a university</h5>
+                <div class="card">
+                  <div class="card-body">
+                    <form (ngSubmit)="modifyClub()" #universityForm="ngForm">
+                      <div class="mb-3">
+                        <label class="form-label" for="InputnomClub">Name</label>
+                        <fieldset>
+                          <input [(ngModel)]="newClub.nomClub" name="nomClub"
+                                 aria-describedby="InputnomClub" class="form-control"
+                                 id="InputnomClub" type="text" required>
+                        </fieldset>
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label" for="Inputtype">Type</label>
+                        <fieldset>
+                          <input [(ngModel)]="newClub.type" name="adresse"
+                                 aria-describedby="InputType" class="form-control"
+                                 id="InputType" type="text" required>
+                        </fieldset>
+                      </div>
+
+                      <div class="mb-3">
+                        <label class="form-label" for="InputdescriptionClub">Description Club</label>
+                        <fieldset>
+                          <input [(ngModel)]="newClub.descriptionClub" name="descriptionClub"
+                                 aria-describedby="InputnomClub" class="form-control"
+                                 id="InputdescriptionClub" type="text" required>
+                        </fieldset>
+                      </div>
+
+                      <div class="mb-3">
+                        <label class="form-label" for="Inputimage">image</label>
+                        <fieldset>
+                          <input [(ngModel)]="newClub.image" name="image"
+                                 aria-describedby="Inputimage" class="form-control"
+                                 id="Inputimage" type="text" required>
+                        </fieldset>
+                      </div>
+
+                      <div class="mb-3">
+                        <label class="form-label" for="Inputcontact">contact</label>
+                        <fieldset>
+                          <input [(ngModel)]="newClub.contact" name="contact"
+                                 aria-describedby="Inputcontact" class="form-control"
+                                 id="Inputcontact" type="text" required>
+                        </fieldset>
+                      </div>
+
+                      <div class="mb-3">
+                        <label class="form-label" for="Inputstatus">status</label>
+                        <fieldset>
+                          <input [(ngModel)]="newClub.status" name="nomClub"
+                                 aria-describedby="Inputstatus" class="form-control"
+                                 id="Inputstatus" type="text" required>
+                        </fieldset>
+                      </div>
+
+                     
+
+                      <div class="mb-3">
+                        <label class="form-label" for="InputdateCreation">Date Creation</label>
+                        <fieldset>
+                          <input [(ngModel)]="newClub.dateCreation" name="dateCreation"
+                                 aria-describedby="InputdateCreation" class="form-control"
+                                 id="InputnomClub" type="datetime-local" required>
+                        </fieldset>
+                      </div>
+                      <div class="mb-3">
+                        <label for="UniSelect">Select Uni:</label>
+                        <select id="UniSelect" name="uni" [(ngModel)]="indexUniversite">
+                          <option *ngFor="let universite of universites" value="{{universites.indexOf(universite)}}">{{ universite.nomUniversite }}</option>
+                        </select>
+                      </div>
+                      <button (click)="modifyClub()">Add Club</button>
+
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,28 @@
+<!-- bloc-modify.component.html -->
+<div class="body-wrapper mx-5">
+  <div class="container-fluid">
+    <div class="card">
+      <div class="card-body">
+<div class="container">
+    <h2>Modify Bloc</h2>
+    <form (submit)="updateBloc()" #form="ngForm">
+        <div class="form-group">
+            <label for="nomBloc">Bloc Name:</label>
+          <fieldset>
+            <input  [(ngModel)]="bloc.nomBloc" type="text" class="form-control" id="nomBloc" name="nomBloc" required>
+          </fieldset>
+          <label for="nomBloc">Capacity:</label>
+          <fieldset>
+            <input  [(ngModel)]="bloc.capaciteBloc" type="text" class="form-control" id="capaciteBloc" name="capaciteBloc" required>
+          </fieldset>
+        </div>
+
+        <!-- Add more input fields for other properties of your Bloc entity -->
+
+        <button type="submit" class="btn btn-primary">Update Bloc</button>
+    </form>
+</div>
+      </div>
+    </div>
+  </div>
+</div>

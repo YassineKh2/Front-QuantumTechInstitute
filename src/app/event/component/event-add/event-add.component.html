@@ -1,0 +1,87 @@
+<!-- UniversityComponent.html -->
+<div class="body-wrapper mx-5">
+    <div class="container-fluid">
+      <div class="container-fluid">
+        <div class="container-fluid">
+          <div class="container-fluid">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title fw-semibold mb-4">Add an Event </h5>
+                <div class="card">
+                  <div class="card-body">
+                    <form (ngSubmit)="addEvent()" #universityForm="ngForm">
+                      <div class="mb-3">
+                        <label class="form-label" for="InputnomEvent">Name</label>
+                        <fieldset>
+                          <input [(ngModel)]="newEvent.nomEvent" name="nomEvent"
+                                 aria-describedby="InputnomEvent" class="form-control"
+                                 id="InputnomEvent" type="text" required>
+                        </fieldset>
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label" for="Inputimage">Description Event</label>
+                        <fieldset>
+                          <input [(ngModel)]="newEvent.descriptionEvent" name="DescriptionEvent"
+                                 aria-describedby="InputdescriptionEvent" class="form-control"
+                                 id="InputdescriptionEvent" type="text" required>
+                        </fieldset>
+                      </div>
+
+                      <div class="mb-3">
+                        <label class="form-label" for="Inputimage">image</label>
+                        <fieldset>
+                          <input [(ngModel)]="newEvent.image" name="image"
+                                 aria-describedby="Inputimage" class="form-control"
+                                 id="Inputimage" type="text" required>
+                        </fieldset>
+                      </div>
+
+                      <div class="mb-3">
+                        <label class="form-label" for="Inputorganisateur">organisateur</label>
+                        <fieldset>
+                          <input [(ngModel)]="newEvent.organisateur" name="organisateur"
+                                 aria-describedby="Inputorganisateur" class="form-control"
+                                 id="Inputorganisateur" type="text" required>
+                        </fieldset>
+                      </div>
+
+                      <div class="mb-3">
+                        <label class="form-label" for="Inputlocation">location</label>
+                        <fieldset>
+                          <input [(ngModel)]="newEvent.location" name="location"
+                                 aria-describedby="Inputlocation" class="form-control"
+                                 id="Inputlocation" type="text" required>
+                        </fieldset>
+                      </div>
+
+                    
+
+                     
+
+                      <div class="mb-3">
+                        <label class="form-label" for="InputdateCreation">Date Creation</label>
+                        <fieldset>
+                          <input [(ngModel)]="newEvent.dateCreation" name="dateCreation"
+                                 aria-describedby="InputdateCreation" class="form-control"
+                                 id="InputdateCreation" type="datetime-local" required>
+                        </fieldset>
+                      </div>
+                     <div class="mb-3">
+                      <label for="clubSelect">Select Club:</label>
+                      <select id="clubSelect" name="club" [(ngModel)]="indexClub">
+                        <option *ngFor="let club of clubs" value="{{clubs.indexOf(club)}}">{{ club.nomClub }}</option>
+                      </select>
+                    </div>
+                      <button >Add Event</button>
+
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
