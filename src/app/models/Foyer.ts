@@ -5,6 +5,6 @@ export class Foyer {
     idFoyer!: number;
     nomFoyer!: string;
     capaciteFoyer: number | undefined;
-    universite!: Universite;
-    blocs: Bloc[] = [];
+    universite!: Universite | undefined;
+    blocs: Bloc[] | undefined;
   }

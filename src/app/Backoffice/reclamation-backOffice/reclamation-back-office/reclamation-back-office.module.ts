@@ -5,14 +5,15 @@ import { ReclamationBackOfficeRoutingModule } from './reclamation-back-office-ro
 import { ReclamationListBackOfficeComponent } from '../component/reclamation-list-back-office/reclamation-list-back-office.component';
 import { FormsModule } from '@angular/forms';
 import { HoverEffectReclamationDirective } from '../hover-effect-reclamation.directive';
+import { PopupComponent } from '../component/popup/popup.component';
 
 
 @NgModule({
-  declarations: [ReclamationListBackOfficeComponent,HoverEffectReclamationDirective],
+  declarations: [ReclamationListBackOfficeComponent,HoverEffectReclamationDirective,PopupComponent],
   imports: [
     CommonModule,
     ReclamationBackOfficeRoutingModule,
-    FormsModule
+    FormsModule,
   ]
 })
 export class ReclamationBackOfficeModule { }

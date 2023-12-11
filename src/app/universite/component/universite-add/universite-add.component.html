@@ -1,0 +1,72 @@
+<!-- UniversityComponent.html -->
+<div class="body-wrapper mx-5">
+  <div class="container-fluid">
+    <div class="container-fluid">
+      <div class="container-fluid">
+        <div class="container-fluid">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title fw-semibold mb-4">Add a university</h5>
+              <div class="card">
+                <div class="card-body">
+                  <form (ngSubmit)="addUni()" #universityForm="ngForm" novalidate>
+                    <div class="mb-3">
+                      <label class="form-label" for="InputnomUniversite">Name</label>
+                      <fieldset>
+                        <input [(ngModel)]="NewUni.nomUniversite" name="nomUniversite"
+                               aria-describedby="InputnomUniversite" class="form-control"
+                               id="InputnomUniversite" type="text" required #nomUni="ngModel">
+                               <div *ngIf="formSubmitted">
+                                <div *ngIf="nomUni.errors?.['required']" style="margin-top: rem;"><span  style="font-weight: bold; color: red; font-size: 12px;">Name is required</span></div>
+                                <div *ngIf="!isFirstCharUppercase(NewUni.nomUniversite)" style="margin-top: rem;">
+                                  <span style="font-weight: bold; color: red; font-size: 12px; margin-top: rem;">universte name should start with an uppercase letter</span>
+                                </div>   
+                              </div>
+                      </fieldset>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label" for="InputAddress">Address</label>
+                      <fieldset>
+                        <input [(ngModel)]="NewUni.adresse" name="adresse"
+                               aria-describedby="InputAddress" class="form-control"
+                               id="InputAddress" type="text" required #adresse="ngModel">
+                               <div *ngIf="formSubmitted">
+                                <div *ngIf="adresse.errors?.['required']" style="margin-top: rem;"><span  style="font-weight: bold; color: red; font-size: 12px;">Name is required</span></div>
+                                </div>
+                      </fieldset>
+                    </div>
+
+                    <div class="mb-3">
+                      <label style="font-weight: bold; color: aliceblue; font-size: 12px;">Profile Picture :(optional)</label>
+                      <fieldset>
+                        <input name="picture" type="file" class="form-control" [(ngModel)]="NewUni.imageUni" id="picture" placeholder="picture" (change)="onFileSelected($event)">
+                      </fieldset>
+                    </div>
+
+                    <div class="mb-3">
+                      <label class="form-label" for="exampleInputFoyer">Foyer</label>
+                      <fieldset>
+                        <select [(ngModel)]="idFoyer" name="foyer" class="form-control"
+                                id="exampleInputFoyer" required #foyer="ngModel">
+                          <option *ngFor="let foy of Foyers" value="{{Foyers.indexOf(foy)}}">{{foy.nomFoyer}}</option>
+                        </select>
+                        <div *ngIf="formSubmitted">
+                          <div *ngIf="foyer.errors?.['required']" style="margin-top: rem;"><span  style="font-weight: bold; color: red; font-size: 12px;">Name is required</span></div>
+                          </div>
+                      </fieldset>
+                    </div>
+
+
+                    <button class="btn btn-primary" type="submit" >
+                      Submit
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

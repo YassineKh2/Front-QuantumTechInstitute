@@ -8,6 +8,7 @@ const routes: Routes = [
 
   {path:'', component:BackofficeComponent, children:[
       {path:'', component:BodyBackofficeComponent},
+
       {
         path: 'etudiantBackoffice',
         loadChildren: () =>
@@ -16,7 +17,14 @@ const routes: Routes = [
       {
         path: 'reclamationBackoffice',
         loadChildren: () =>
-          import('./reclamation-backOffice/reclamation-back-office/reclamation-back-office.module').then((m) => m.ReclamationBackOfficeModule),
+          import('./reclamation-backOffice/reclamation-back-office/reclamation-back-office.module').then((m) => m.ReclamationBackOfficeModule),},
+      {path: 'universite',
+        loadChildren: () =>
+          import('../universite/universite.module').then((m) => m.UniversiteModule),
+      },
+      {path: 'foyer',
+        loadChildren: () =>
+          import('../foyer/foyer.module').then((m) => m.FoyerModule),
       },
     ]},
 ];

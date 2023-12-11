@@ -10,12 +10,16 @@ const routes: Routes = [
     loadChildren: () =>
       import('./frontoffice/frontoffice.module').then((m) => m.FrontofficeModule),
   },
-  
   {
     path: 'universites',
     loadChildren: () =>
       import('./universite/universite.module').then((m) => m.UniversiteModule),
   },
+  {
+    path: 'backoffice',
+    loadChildren: () =>
+      import('./Backoffice/backoffice.module').then((m) => m.BackofficeModule),
+  }
 ];
 
 @NgModule({
